@@ -4,8 +4,8 @@ import { AuthContext } from "../context/AuthContext";
 
 const PrivateRoute = ({ role, children }) => {
   const { user } = useContext(AuthContext);
-  console.log("User in PrivateRoute:", user); // Debug: Check user in PrivateRoute
-  console.log("Required role:", role); // Debug: Check required role
+  console.log("User in PrivateRoute:", user);
+  console.log("Required role:", role);
 
   if (!user) {
     console.log("User not authenticated, redirecting.");

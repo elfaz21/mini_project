@@ -1,12 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import AdminDashboard from "./components/AdminDashboard";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
-import Signup from "./components/Signup";
-import UserDashboard from "./components/UserDashboard";
 import { AuthProvider } from "./context/AuthContext";
-import LandingPage from "./page/LandingPage";
+import AdminDashboard from "./pages/AdminDashboard";
+import LandingPage from "./pages/LandingPage";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import UserDashboard from "./pages/UserDashboard";
 
 function App() {
   return (

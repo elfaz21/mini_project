@@ -20,21 +20,21 @@ const ticketSchema = new mongoose.Schema({
         required: true,
     },
 
-    customerName: { // New field for customer's name
+    customerName: { 
         type: String,
-        required: true, // Make it required if needed
+        required: true, 
     },
-    customerPhone: { // New field for customer's phone number
+    customerPhone: {
         type: String,
-        required: true, // Make it required if needed
+        required: true, 
     },
     createdAt: {
         type: Date,
-        default: Date.now, // Automatically set the current date and time
+        default: Date.now,
     },
 });
 
-// Check if the model is already defined
+
 const Ticket = mongoose.models.Ticket || mongoose.model('Ticket', ticketSchema);
 
 module.exports = Ticket;

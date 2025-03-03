@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import axios from "../axiosConfig"; // Adjust this import based on your setup
+import axios from "../axiosConfig";
 
 export const AuthContext = createContext();
 
@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await axios.post("/login", { username, password });
       setUser(response.data.user);
-      console.log("User in context:", response.data.user); // Debug: Check user in context
+      console.log("User in context:", response.data.user);
       localStorage.setItem("token", response.data.token);
       return response.data;
     } catch (error) {

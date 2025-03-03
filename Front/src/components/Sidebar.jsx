@@ -20,7 +20,7 @@ const Sidebar = ({
           <button
             onClick={() => {
               setActiveSection("tickets");
-              closeSidebar(); // Close the sidebar after navigating
+              closeSidebar();
             }}
             className={`w-full text-left py-2 px-4 rounded hover:bg-orange-700 ${
               activeSection === "tickets" ? "bg-orange-600" : ""
@@ -32,7 +32,7 @@ const Sidebar = ({
           <button
             onClick={() => {
               setActiveSection("addTicket");
-              closeSidebar(); // Close the sidebar after navigating
+              closeSidebar();
             }}
             className={`w-full text-left py-2 px-4 rounded hover:bg-orange-700 ${
               activeSection === "addTicket" ? "bg-orange-600" : ""

@@ -1,17 +1,17 @@
 import React from "react";
-import { FaCheckCircle } from "react-icons/fa"; // Import the success icon
+import { FaCheckCircle } from "react-icons/fa";
 
 const TicketForm = ({
   title,
   description,
   status,
-  customerName, // New prop for customer name
-  customerPhone, // New prop for customer phone
+  customerName,
+  customerPhone,
   setTitle,
   setDescription,
   setStatus,
-  setCustomerName, // New setter for customer name
-  setCustomerPhone, // New setter for customer phone
+  setCustomerName,
+  setCustomerPhone,
   handleSubmit,
   error,
   successMessage,
