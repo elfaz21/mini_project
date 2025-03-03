@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://admin:admin123@cluster0.8dcsf.mongodb.net/mini', {});
+mongoose.connect('mongodb+srv://admin:admin123@cluster0.8dcsf.mongodb.net/', {});
 
 mongoose.connection.on('connected', () => {
     console.log('Successfully connected to MongoDB');

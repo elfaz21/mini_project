@@ -1,4 +1,3 @@
-// models/Ticket.js
 const mongoose = require('mongoose');
 
 const ticketSchema = new mongoose.Schema({
@@ -19,6 +18,19 @@ const ticketSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
+    },
+
+    customerName: { // New field for customer's name
+        type: String,
+        required: true, // Make it required if needed
+    },
+    customerPhone: { // New field for customer's phone number
+        type: String,
+        required: true, // Make it required if needed
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now, // Automatically set the current date and time
     },
 });
 
