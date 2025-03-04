@@ -10,7 +10,7 @@ import { AuthContext } from "../context/AuthContext";
 const UserDashboard = () => {
   const { user } = useContext(AuthContext);
   const [tickets, setTickets] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [customerName, setCustomerName] = useState("");
@@ -24,7 +24,7 @@ const UserDashboard = () => {
 
   useEffect(() => {
     const fetchTickets = async () => {
-      setLoading(true); // Set loading true before fetching
+      setLoading(true);
       try {
         const response = await axios.get("/", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -33,7 +33,7 @@ const UserDashboard = () => {
       } catch (error) {
         console.error("Error fetching tickets:", error);
       } finally {
-        setLoading(false); // Set loading false after fetching
+        setLoading(false);
       }
     };
     fetchTickets();

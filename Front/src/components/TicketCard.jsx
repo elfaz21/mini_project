@@ -60,7 +60,6 @@ const TicketCard = ({ ticket, onStatusChange, isAdmin }) => {
         {ticket.description}
       </p>
 
-      {/* Customer Info */}
       <div className="mt-6 p-4 bg-gray-700/50 rounded-lg">
         <div className="flex items-center mb-2">
           <FaUser className="text-blue-400 mr-2" />
@@ -74,7 +73,6 @@ const TicketCard = ({ ticket, onStatusChange, isAdmin }) => {
         </div>
       </div>
 
-      {/* Status & Timestamp */}
       <div className="mt-6 flex justify-between items-center text-sm">
         <span
           className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${
