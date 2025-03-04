@@ -14,7 +14,7 @@ const LandingPage = () => {
             duration={500}
             className="text-2xl font-bold cursor-pointer"
           >
-            Issue Tracking System
+            Issue Ticketing
           </Link>
           <div>
             <Link

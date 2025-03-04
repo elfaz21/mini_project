@@ -10,6 +10,7 @@ import { AuthContext } from "../context/AuthContext";
 const AdminDashboard = () => {
   const { user } = useContext(AuthContext);
   const [tickets, setTickets] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("Open");
@@ -24,6 +25,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const fetchTickets = async () => {
+      setLoading(true);
       try {
         const response = await axios.get("/", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -31,6 +33,8 @@ const AdminDashboard = () => {
         setTickets(response.data);
       } catch (error) {
         console.error("Error fetching tickets:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchTickets();
@@ -141,49 +145,57 @@ const AdminDashboard = () => {
 
         {successMessage && <p className="text-green-500">{successMessage}</p>}
 
-        {activeSection === "tickets" && (
-          <div>
-            <div className="flex mb-4">
-              <input
-                type="text"
-                placeholder="Search by title..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="p-2 rounded-md text-black"
-              />
-            </div>
-            <div
-              id="tickets"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
-              {filteredTickets.map((ticket) => (
-                <TicketCard
-                  key={ticket._id}
-                  ticket={ticket}
-                  onStatusChange={handleStatusChange}
-                  isAdmin={true}
-                />
-              ))}
-            </div>
+        {loading ? (
+          <div className="flex justify-center items-center h-full">
+            <div className="border-4 border-t-4 border-gray-200 rounded-full w-12 h-12 animate-spin border-t-orange-600"></div>
           </div>
-        )}
+        ) : (
+          <>
+            {activeSection === "tickets" && (
+              <div>
+                <div className="flex mb-4">
+                  <input
+                    type="text"
+                    placeholder="Search by title..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="p-2 rounded-md text-black"
+                  />
+                </div>
+                <div
+                  id="tickets"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  {filteredTickets.map((ticket) => (
+                    <TicketCard
+                      key={ticket._id}
+                      ticket={ticket}
+                      onStatusChange={handleStatusChange}
+                      isAdmin={true}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
-        {activeSection === "addTicket" && (
-          <TicketForm
-            title={title}
-            description={description}
-            status={status}
-            customerName={customerName}
-            customerPhone={customerPhone}
-            setTitle={setTitle}
-            setDescription={setDescription}
-            setStatus={setStatus}
-            setCustomerName={setCustomerName}
-            setCustomerPhone={setCustomerPhone}
-            handleSubmit={handleSubmit}
-            error={error}
-            isAdmin={true}
-          />
+            {activeSection === "addTicket" && (
+              <TicketForm
+                title={title}
+                description={description}
+                status={status}
+                customerName={customerName}
+                customerPhone={customerPhone}
+                setTitle={setTitle}
+                setDescription={setDescription}
+                setStatus={setStatus}
+                setCustomerName={setCustomerName}
+                setCustomerPhone={setCustomerPhone}
+                handleSubmit={handleSubmit}
+                error={error}
+                isAdmin={true}
+              />
+            )}
+          </>
         )}
       </div>
     </div>

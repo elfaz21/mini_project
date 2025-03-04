@@ -46,7 +46,7 @@ const Sidebar = ({
       <div className="mt-96">
         <button
           onClick={handleLogout}
-          className="w-full mt-64 bg-orange-600 p-2 rounded hover:bg-orange-700 transition"
+          className="w-full bg-orange-600 p-2 rounded-full hover:bg-orange-700 transition"
         >
           <FaSignOutAlt className="inline mr-2" />
           Logout

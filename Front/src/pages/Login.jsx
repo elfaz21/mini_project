@@ -7,10 +7,14 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
+
     try {
       const response = await login(username, password);
       const { token, user } = response;
@@ -25,6 +29,8 @@ const Login = () => {
     } catch (err) {
       console.error("Login error:", err);
       setError("Invalid credentials");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,9 +63,18 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-orange-600 text-white p-2 rounded hover:bg-orange-700 transition"
+            className={`w-full bg-orange-600 text-white p-2 rounded hover:bg-orange-700 transition ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
           >
-            Login
+            {loading ? (
+              <div className="flex items-center justify-center">
+                <div className="border-4 border-t-4 border-gray-200 rounded-full w-5 h-5 animate-spin border-t-orange-600"></div>
+              </div>
+            ) : (
+              "Login"
+            )}
           </button>
           {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
         </form>

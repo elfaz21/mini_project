@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../axiosTicketConfig"; // Adjust the import according to your project structure
+import axios from "../axiosTicketConfig";
 
 const Dashboard = () => {
   const [ticketCounts, setTicketCounts] = useState({
